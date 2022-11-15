@@ -1,0 +1,7 @@
+sotsiaalmeedia.socialmediaList:
+  path: '/sotsiaalmeedia'
+  defaults:
+    _controller: '\Drupal\sotsiaalmeedia\Controller\mediaController::socialmediaList'
+    _title: 'Lisatud sotsiaalmeedia lingid'
+  requirements:
+    _permission: 'access content'

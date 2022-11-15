@@ -1,0 +1,41 @@
+<?php
+use Drupal\Core\Database\Database;
+
+function epic_social_media_schema() {
+  $schema['epic_social_media_data'] = [
+    'description' => 'Stores module data',
+    'fields' => [
+      'id' => [
+        'description' => 'Primary key',
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'network' => [
+        'description' => 'Social media network',
+        'type' => 'varchar',
+        'not null' => TRUE,
+        'default' => '',
+        'length' => DRUPAL_EXTENSION_NAME_MAX_LENGTH,
+      ],
+      'time_clicked' => [
+        'description' => 'How many times clicked',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unasigned' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+  ];
+  return $schema;
+}
+
+function epic_social_media_update_8001() {
+  drupal_install_schema('epic_social_media');
+
+  // $table = thomas_more_social_media_schema();
+  // \Drupal::database()->schema()->createTable('thomas_more_social_media_counter', $table['thomas_more_social_media_counter']);
+}

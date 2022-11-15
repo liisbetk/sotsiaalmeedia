@@ -1,0 +1,20 @@
+<?php
+
+function epic_social_media_theme($existing, $type, $theme, $path) {
+  return [
+    'epic-social-media' => [
+      'variables' => [
+
+        'facebook_url' => NULL,
+        'google_url' => NULL,
+        'twitter_url' => NULL,
+        'linkedin_url' => NULL,
+
+        'facebook_count' => NULL,
+        'google_count' => NULL,
+        'twitter_count' => NULL,
+        'linkedin_count' => NULL,
+      ]
+    ]
+  ];
+}

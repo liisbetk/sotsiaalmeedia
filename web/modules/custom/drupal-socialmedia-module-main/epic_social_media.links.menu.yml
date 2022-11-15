@@ -1,0 +1,8 @@
+#  Zodat het form wordt gelinkt aan het menu, route_name moet overeenkomen in de routing file
+epicsocials.admin:
+  title: 'Social media links'
+  description: 'Epic social media links toevoegen'
+  menu_name: 'Social media links'
+  weight: -10
+  parent: system.admin_config_ui
+  route_name: epic.form

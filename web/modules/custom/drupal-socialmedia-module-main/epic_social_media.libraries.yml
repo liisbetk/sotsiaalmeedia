@@ -1,0 +1,16 @@
+epic_social_media:
+  version: 1
+  css:
+    component:
+      assets/css/social-media.css: {}
+    base:
+      https://use.fontawesome.com/releases/v5.5.0/css/all.css: {type: external}
+  js:
+    assets/js/epic_social_media.counter.js: {}
+
+data_charts:
+  js:
+    assets/js/epic_social_media.charts.js: {}
+    https://www.gstatic.com/charts/loader.js : {type: external}
+  dependecies: 
+    - core/drupalSettings

@@ -1,0 +1,5 @@
+name: Epic social media
+type: module
+description: Link your social medias with this custom module.
+package: Custom
+core_version_requirement: ^8 || ^9
