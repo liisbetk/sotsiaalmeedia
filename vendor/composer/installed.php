@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => 'bbbb6259dde0b9c4a06f47bd0af01bcee8f5b662',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -458,12 +458,23 @@
             'dev_requirement' => false,
         ),
         'drupal/recommended-project' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'bbbb6259dde0b9c4a06f47bd0af01bcee8f5b662',
+            'dev_requirement' => false,
+        ),
+        'drupal/twbstools' => array(
+            'pretty_version' => 'dev-2.1.x',
+            'version' => 'dev-2.1.x',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/twbstools',
+            'aliases' => array(
+                0 => '2.1.x-dev',
+            ),
+            'reference' => 'cbd2730d5e8f2149e79d7300a421a147bec37356',
             'dev_requirement' => false,
         ),
         'drush/drush' => array(

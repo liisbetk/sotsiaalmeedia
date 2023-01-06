@@ -110,7 +110,7 @@ function bootstrap5_preprocess_menu_local_task(&$variables) {
   // link handler applies stricter comparison rules than what is necessary for
   // tabs.
   if (isset($variables['is_active']) && $variables['is_active'] === TRUE) {
-    $variables['link']['#options']['attributes']['class'][] = 'active is-active';
+    $variables['link']['#options']['attributes']['class'][] = 'nav-link active is-active';
   }
   else {
     $variables['link']['#options']['attributes']['class'][] = 'nav-link';

@@ -10,7 +10,7 @@ or this theme's _variables_drupal.scss and recompile css!)
 
 ## FEATURES
 
-* Bootstrap 5 library ([5.2.2](https://blog.getbootstrap.com/2022/10/03/bootstrap-5-2-2/) and [5.1.3](https://blog.getbootstrap.com/2021/10/05/bootstrap-5-1-2/)) included
+* Bootstrap 5 library ([5.2.3](https://blog.getbootstrap.com/2022/11/22/bootstrap-5-2-3/) and [5.1.3](https://blog.getbootstrap.com/2021/10/05/bootstrap-5-1-2/)) included
 * Bootstrap 5 breakpoints
 * Bootstrap 5 integration with CKEditor
 * Bootstrap 5 configuration within admin user interface

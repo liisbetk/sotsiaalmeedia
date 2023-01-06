@@ -18,6 +18,7 @@ class mediaController {
             ['name' => "TikTok"],
             ['name' => "Reddit"]
         ];
+
         $socialmediaLinks = "";
         foreach ($links as $link) {
             $socialmediaLinks .= '<li>' . $link['name'] . '</li>';

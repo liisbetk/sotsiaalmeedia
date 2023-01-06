@@ -56,10 +56,10 @@ class SubthemeManager {
     $subthemePathValue = $form_state->getValue('subtheme_folder');
     // Check for empty values.
     if (!$subthemePathValue) {
-      $form_state->setErrorByName('subtheme_folder', t('Subtheme folder is empty.'));
+      $form_state->setErrorByName('subtheme_folder', $this->t('Subtheme folder is empty.'));
     }
     if (!$form_state->getValue('subtheme_machine_name')) {
-      $form_state->setErrorByName('subtheme_machine_name', t('Subtheme machine name is empty.'));
+      $form_state->setErrorByName('subtheme_machine_name', $this->t('Subtheme machine name is empty.'));
     }
     if (count($form_state->getErrors())) {
       return;
@@ -67,11 +67,11 @@ class SubthemeManager {
 
     // Check for path trailing slash.
     if (strrev(trim($subthemePathValue))[0] === '/') {
-      $form_state->setErrorByName('subtheme_folder', t('Subtheme folder should be without trailing slash.'));
+      $form_state->setErrorByName('subtheme_folder', $this->t('Subtheme folder should be without trailing slash.'));
     }
     // Check for name validity.
     if (!$form_state->getValue('subtheme_machine_name')) {
-      $form_state->setErrorByName('subtheme_machine_name', t('Subtheme name format is incorrect.'));
+      $form_state->setErrorByName('subtheme_machine_name', $this->t('Subtheme name format is incorrect.'));
     }
     if (count($form_state->getErrors())) {
       return;
@@ -80,22 +80,39 @@ class SubthemeManager {
     // Check for writable path.
     $directory = DRUPAL_ROOT . '/' . $subthemePathValue;
     if ($this->fileSystem->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS) === FALSE) {
-      $form_state->setErrorByName('subtheme_folder', t('Subtheme cannot be created. Check permissions.'));
+      $form_state->setErrorByName('subtheme_folder', $this->t('Subtheme cannot be created. Check permissions.'));
     }
     // Check for common theme names.
     if (in_array($form_state->getValue('subtheme_machine_name'), [
       'bootstrap', 'bootstrap4', 'bootstrap5', 'claro', 'bartik', 'seven',
     ])) {
-      $form_state->setErrorByName('subtheme_machine_name', t('Subtheme name should not match existing themes.'));
+      $form_state->setErrorByName('subtheme_machine_name', $this->t('Subtheme name should not match existing themes.'));
     }
     if (count($form_state->getErrors())) {
       return;
     }
 
+    // Check for reserved terms.
+    if (in_array($form_state->getValue('subtheme_machine_name'), [
+      'src', 'lib', 'vendor', 'assets', 'css', 'files', 'images', 'js', 'misc', 'templates', 'includes', 'fixtures', 'Drupal',
+    ])) {
+      $form_state->setErrorByName('subtheme_machine_name', $this->t('Subtheme name should not match reserved terms.'));
+    }
+
+    // Validate machine name to ensure correct format.
+    if(!preg_match("/^[a-z]+[0-9a-z_]+$/", $form_state->getValue('subtheme_machine_name'))) {
+      $form_state->setErrorByName('subtheme_machine_name', $this->t('Subtheme machine name format is incorrect.'));
+    }
+
+    // Check machine name is not longer than 50 characters.
+    if (strlen($form_state->getValue('subtheme_machine_name')) > 50) {
+      $form_state->setErrorByName('subtheme_folder', $this->t('Subtheme machine name must not be longer than 50 characters.'));
+    }
+
     // Check for writable path.
     $themePath = $directory . '/' . $form_state->getValue('subtheme_machine_name');
     if (file_exists($themePath)) {
-      $form_state->setErrorByName('subtheme_machine_name', t('Folder already exists.'));
+      $form_state->setErrorByName('subtheme_machine_name', $this->t('Folder already exists.'));
     }
   }
 
@@ -282,12 +299,12 @@ class SubthemeManager {
         }
       }
 
-      $this->messenger->addStatus(t('Subtheme created at %subtheme', [
+      $this->messenger->addStatus($this->t('Subtheme created at %subtheme', [
         '%subtheme' => $themePath,
       ]));
     }
     else {
-      $this->messenger->addError(t('Folder already exists at %subtheme', [
+      $this->messenger->addError($this->t('Folder already exists at %subtheme', [
         '%subtheme' => $themePath,
       ]));
     }

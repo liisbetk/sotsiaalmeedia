@@ -1,4 +1,0 @@
-services:
-  epic_social_media.click_manager:
-    class: Drupal\epic_social_media\ClickManager
-    arguments: ['@database', '@datetime.time']
